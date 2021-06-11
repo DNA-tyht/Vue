@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>绑定属性</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div id="app" v-cloak>
+  <h2 v-once>{{message}}</h2>
+  <h2 v-html="url"></h2>
+  <h2 v-text="message"></h2>
+  <h2 v-pre>{{message}}</h2>
+  <a v-bind:href="baidu">百度两下</a> </br>
+  <a :href="baidu">百度三下</a>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  setTimeout(function () {
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: "DNA",
+        url: '<a href="https://www.baidu.com/">百度一下</a>',
+        baidu: "https://www.baidu.com/"
+      },
+      methods: {
+      }
+    });
+  }, 1000)
+</script>
+</body>
+</html>
