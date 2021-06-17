@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件监听</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{counter}}</h2>
+  <button @click="increment">+</button>
+  <button @click="decrement">-</button>
+  <br/> <br/>
+  <!--  在事件定义时，写方法时省略的小括号  -->
+  <button @click="btn1Click">按钮1</button>
+  <button @click="btn2Click(123)">按钮2</button>
+  <!--  Vue会默认将浏览器产生的event时间对象作为参数传入到方法  -->
+  <button @click="btn3Click(123, $event)">按钮3</button>
+  <br/> <br/>
+  <!--  v-on修饰符  -->
+  <div @click="divClick">
+    修饰符
+    <button @click.stop = "btn1Click">按钮</button>
+  </div>
+  <br/> <br/>
+  <form action="baidu">
+    <input type="submit" value="提交" @click.prevent="submitClick"/>
+  </form>
+  <br/> <br/>
+  <input type="text" @keyup.enter="keyUp"/>
+  <br/> <br/>
+  <button @click.once="btn2Click">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      counter: 0,
+      event: "DNA",
+    },
+    methods: {
+      increment() {
+        this.counter++;
+      },
+      decrement() {
+        this.counter--;
+      },
+      btn1Click() {
+        alert("btnClick");
+      },
+      btn2Click(event) {
+        alert("---" + event);
+      },
+      btn3Click(abc, event) {
+        alert("+++" + abc + event);
+      },
+      divClick() {
+        alert("divClick");
+      },
+      submitClick() {
+        alert("submitClick");
+      },
+      keyUp() {
+        alert("keyUp");
+      },
+    },
+  });
+</script>
+</body>
+</html>

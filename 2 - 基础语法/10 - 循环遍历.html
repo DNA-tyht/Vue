@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>循环遍历</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="name in names">{{name}}</li>
+  </ul>
+  <br/> <br/>
+  <!--  在遍历的过程过获取索引值  -->
+  <ul>
+    <li v-for="(name, index) in names">{{index + 1}}.{{name}}</li>
+  </ul>
+  <br/> <br/>
+  <ul>
+    <li v-for="(value, key, index) in info">{{value}}-{{key}}-{{index + 1}}</li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      names: ["纯阳", "七秀", "天策", "少林", "万花"],
+      info: {
+        name: "Song juhan",
+        age: 26,
+        height: 188,
+      },
+    },
+    methods: {
+    },
+  });
+</script>
+</body>
+</html>

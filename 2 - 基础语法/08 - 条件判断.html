@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>条件判断</title>
+</head>
+<body>
+<div id="app">
+  <h2 v-if=isShow>
+    <div>{{message1}}</div>
+  </h2>
+  <h2 v-else>{{message2}}</h2>
+  <br/>
+  <!--  复杂的逻辑不推荐写在这里  -->
+  <h2 v-if="score >= 90">优秀</h2>
+  <h2 v-else-if="score >= 80">良好</h2>
+  <h2 v-else-if="score >= 60">及格</h2>
+  <h2 v-else="score < 60">不及格</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message1: "message1",
+      message2: "message2",
+      isShow: false,
+      score: 80,
+    },
+    methods: {
+    },
+  });
+</script>
+</body>
+</html>

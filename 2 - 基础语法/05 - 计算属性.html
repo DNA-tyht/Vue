@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>计算属性</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{firstName + " " + lastName}}</h2>
+  <h2>{{fullName1}}</h2>
+  <h2>{{fullName2}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>总价格: {{totalPrice}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      lastName: "Weston",
+      firstName: "Fan",
+      books: [
+          {id: 1, name: "Vue从入门到画画", price: 50},
+          {id: 2, name: "Vue从入门到画画", price: 50},
+          {id: 3, name: "Vue从入门到画画", price: 50},
+      ],
+    },
+    computed: {
+      //只读省略写法
+      fullName1: function () {
+        return this.firstName + " " + this.lastName;
+      },
+      totalPrice: function () {
+        let result = 0;
+        for (let i = 0; i < this.books.length; i++) {
+          result += this.books[i].price;
+        }
+        return result;
+      },
+      fullName2: {
+        //set get 方法
+        set: function (newValue) {
+          const names = newValue.split(' ');
+          this.firstName = names[0];
+          this.lastName = names[1];
+        },
+        get: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      },
+    },
+    methods: {
+      getFullName: function () {
+        return this.firstName + " " + this.lastName;
+      },
+    },
+  });
+</script>
+</body>
+</html>
