@@ -9,15 +9,17 @@
   <ul>
     <li v-for="name in names">{{name}}</li>
   </ul>
-  <br/> <br/>
   <!--  在遍历的过程过获取索引值  -->
   <ul>
     <li v-for="(name, index) in names">{{index + 1}}.{{name}}</li>
   </ul>
-  <br/> <br/>
   <ul>
     <li v-for="(value, key, index) in info">{{value}}-{{key}}-{{index + 1}}</li>
   </ul>
+  <ul>
+    <li v-for="(letter, index) in letters" :key="letter">{{index + 1}}.{{letter}}</li>
+  </ul>
+  <button @click="btnClick">按钮</button>
 </div>
 <script src="../js/vue.js"></script>
 <script>
@@ -30,8 +32,12 @@
         age: 26,
         height: 188,
       },
+      letters: ["A", "B", "C", "D", "E"],
     },
     methods: {
+      btnClick () {
+        this.letters.push("aaa");
+      },
     },
   });
 </script>

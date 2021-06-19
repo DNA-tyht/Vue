@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript高阶函数</title>
+</head>
+<body>
+<script>
+  const nums = [10, 20, 111, 222, 444, 40, 50];
+  //filter函数的使用
+  let newNums1 = nums.filter(function (num) {
+    return num < 100;
+  });
+  //map函数的使用
+  let newNums2 = newNums1.map(function (num) {
+    return num * 2;
+  });
+  //reduce函数的使用
+  //preValue: 上次回调返回的值
+  //0: preValue的初始值
+  let total = newNums2.reduce(function (preValue, num) {
+    return preValue + num;
+  }, 0);
+  alert(total);
+  //链式写法
+  total = nums.filter(function (num) {
+    return num < 100;
+  }).map(function (num) {
+    return num *2;
+  }).reduce(function (preValue, num) {
+    return preValue + num;
+  }, 0);
+  alert(total);
+  //箭头函数
+  total = nums.filter(num => num < 100).map(num => num * 2).reduce((pre, num) => pre + num);
+  alert(total);
+</script>
+</body>
+</html>

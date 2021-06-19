@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>双向绑定</title>
+</head>
+<body>
+<div id="app">
+  <input type="text" v-model="message"/>
+  {{message}} <br/> <br/>
+  <input type="text" :value="message" @input="message = $event.target.value"/>
+  {{message}} <br/> <br/>
+  <label for="male">
+    <input type="radio" id="male" name="gender" value="男" v-model="gender"/>男
+  </label>
+  <label for="female">
+    <input type="radio" id="female" name="gender" value="女" v-model="gender"/>女
+  </label>
+  <h4>{{gender}}</h4>
+  <label for="lessons">
+    <input type="checkbox" id="lessons" v-model="isAgree"/>同意协议
+  </label>
+  <button :disabled="!isAgree">下一步</button>
+  <br/> <br/>
+  <input type="checkbox" value="篮球" v-model="hobbies"/>篮球
+  <input type="checkbox" value="足球" v-model="hobbies"/>足球
+  <input type="checkbox" value="乒乓球" v-model="hobbies"/>乒乓球
+  <input type="checkbox" value="羽毛球" v-model="hobbies"/>羽毛球
+  <h4>爱好: {{hobbies}}</h4>
+  <!--  选择一个  -->
+  <select name="abc" v-model="fruit">
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="榴莲">榴莲</option>
+    <option value="荔枝">荔枝</option>
+    <option value="菠萝">菠萝</option>
+  </select>
+  <h4>水果: {{fruit}}</h4>
+  <!--  选择多个  -->
+  <select name="abc" v-model="fruits" multiple>
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="榴莲">榴莲</option>
+    <option value="荔枝">荔枝</option>
+    <option value="菠萝">菠萝</option>
+  </select>
+  <h4>水果: {{fruits}}</h4>
+  <label v-for="hobby in originHobbies">
+    <input type="checkbox" :value="hobby" v-model="hobbies"/>
+    {{hobby}}
+  </label> <br/>
+  <!--  修饰符  -->
+  <input type="text" v-model.lazy="message"/>
+  {{message}} <br/> <br/>
+  <input type="number" v-model.number="age"/>
+  {{typeof age}} <br/> <br/>
+  <input type="text" v-model.trim="message"/>
+  {{message}} <br/> <br/>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "DNA",
+      gender: "女",
+      isAgree: false,
+      hobbies: [],
+      fruit: "苹果",
+      fruits: [],
+      originHobbies: ["篮球", "足球", "乒乓球", "羽毛球", "台球", "高尔夫球"],
+      age: 10,
+    },
+    methods: {
+    },
+  });
+</script>
+</body>
+</html>
