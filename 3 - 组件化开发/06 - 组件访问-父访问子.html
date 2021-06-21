@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件访问-父访问子</title>
+</head>
+<body>
+<div id="app">
+  <cpn ref="a"></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+  <button @click="btnClick">按钮</button>
+</div>
+<template id="cpn">
+  <div>子组件</div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+    },
+    methods: {
+      btnClick () {
+        alert(this.$refs.a.name);
+        for (let c of this.$children) {
+          console.log(c.name);
+          c.showMessage();
+        }
+      },
+    },
+    components: {
+      cpn: {
+        template: "#cpn",
+        methods: {
+          showMessage () {
+            alert("showMessage");
+          },
+        },
+      },
+    },
+  });
+</script>
+</body>
+</html>
