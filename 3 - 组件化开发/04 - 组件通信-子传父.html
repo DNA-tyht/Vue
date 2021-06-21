@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件通信-子传父</title>
+</head>
+<body>
+<!--  父组件模板  -->
+<div id="app">
+  <cpn @item-click="cpnClick"></cpn>
+</div>
+<!--  子组件模板  -->
+<template id="cpn">
+  <div>
+    <button v-for="item in categories" @click="btnClick(item)">
+      {{item.name}}
+    </button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const cpn = {
+    template: "#cpn",
+    data () {
+      return {
+        categories: [
+          {id: "1", name: "热门推荐"},
+          {id: "2", name: "手机数码"},
+          {id: "3", name: "家用电器"},
+          {id: "4", name: "电脑办公"},
+        ],
+      };
+    },
+    methods: {
+      btnClick (item) {
+        this.$emit("item-click", item);
+      }
+    },
+  };
+  const app = new Vue({
+    el: "#app",
+    data: {
+    },
+    methods: {
+      cpnClick (item) {
+        alert(item);
+      }
+    },
+    components: {
+      cpn,
+    },
+  });
+</script>
+</body>
+</html>

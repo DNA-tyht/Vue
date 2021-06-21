@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数据存放</title>
+</head>
+<body>
+<div id="app">
+  <counter></counter>
+  <counter></counter>
+  <counter></counter>
+</div>
+<template id="counter">
+  <div>
+    <h2>当前计数: {{counter}}</h2>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const obj = {
+    counter: 0,
+  };
+  Vue.component("counter", {
+    template: "#counter",
+    data () {
+      //获取不同对象
+      return {
+        counter: 0,
+      };
+      //获取同一对象
+      // return obj;
+    },
+    methods: {
+      increment () {
+        this.counter++;
+      },
+      decrement () {
+        this.counter--;
+      }
+    },
+  });
+  const app = new Vue({
+    el: "#app",
+    data: {
+    },
+    methods: {
+    },
+  });
+</script>
+</body>
+</html>
