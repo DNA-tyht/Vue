@@ -6,7 +6,7 @@ module.exports = {
   //定义入口出口
   entry: "./src/main.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     filename: "bundle.js",
     publicPath: "dist/"
   },

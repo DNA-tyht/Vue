@@ -4,6 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/4 - webpack使用/02 - webpack配置/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/4 - webpack使用/04 - webpack配置vue/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
