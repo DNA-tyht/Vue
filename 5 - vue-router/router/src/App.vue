@@ -1,30 +1,48 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+    <router-link to="/home" tag="div" replace>首页</router-link>&
+    <router-link to="/about" tag="div" replace>关于</router-link>&
+    <router-link :to="/user/+userId">用户</router-link>&
+    <router-link :to="{path: '/profile', query: {name: 'DNA', age: 18}}">档案</router-link>
+    <keep-alive exclude="Profile, User">
+      <router-view></router-view>
+    </keep-alive>
+    <!--<button @click="homeClick">首页</button>-->
+    <!--<button @click="aboutClick">关于</button>-->
+    <!--<button @click="profileClick">档案</button>-->
   </div>
-  <router-view/>
 </template>
 
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      userId: "DNA"
+    }
+  },
+  methods: {
+    homeClick() {
+      this.$router.push("/home");
+    },
+    aboutClick() {
+      this.$router.push("/about");
+    },
+    profileClick() {
+      this.$router.push({
+        path: "/profile",
+        query: {
+          name: "DNA",
+          age: 18
+        }
+      })
+    }
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
+.active {
   color: #42b983;
 }
 </style>
