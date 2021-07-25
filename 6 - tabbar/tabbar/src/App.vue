@@ -1,30 +1,69 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+<div id="app">
+  <router-view></router-view>
+  <tab-bar>
+    <tab-bar-item path="/home">
+      <template v-slot:item-icon>
+        <img src="./assets/img/tabBar/home.svg" alt=""/>
+      </template>
+      <template v-slot:item-icon-active>
+        <img src="./assets/img/tabBar/home_active.svg" alt=""/>
+      </template>
+      <template v-slot:item-text>
+        <div>首页</div>
+      </template>
+    </tab-bar-item>
+    <tab-bar-item path="/category">
+      <template v-slot:item-icon>
+        <img src="./assets/img/tabBar/category.svg" alt=""/>
+      </template>
+      <template v-slot:item-icon-active>
+        <img src="./assets/img/tabBar/category_active.svg" alt=""/>
+      </template>
+      <template v-slot:item-text>
+        <div>分类</div>
+      </template>
+    </tab-bar-item>
+    <tab-bar-item path="/cart">
+      <template v-slot:item-icon>
+        <img src="./assets/img/tabBar/shopcart.svg" alt=""/>
+      </template>
+      <template v-slot:item-icon-active>
+        <img src="./assets/img/tabBar/shopcart_active.svg" alt=""/>
+      </template>
+      <template v-slot:item-text>
+        <div>购物车</div>
+      </template>
+    </tab-bar-item>
+    <tab-bar-item path="/profile">
+      <template v-slot:item-icon>
+        <img src="./assets/img/tabBar/profile.svg" alt=""/>
+      </template>
+      <template v-slot:item-icon-active>
+        <img src="./assets/img/tabBar/profile_active.svg" alt=""/>
+      </template>
+      <template v-slot:item-text>
+        <div>我的</div>
+      </template>
+    </tab-bar-item>
+  </tab-bar>
+</div>
 </template>
 
+<script>
+import TabBar from "./components/tabBar/TabBar";
+import TabBarItem from "./components/tabBar/TabBarItem";
+
+export default {
+  name: "App",
+  components: {
+    TabBar,
+    TabBarItem,
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+@import "./assets/css/base.css";
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
