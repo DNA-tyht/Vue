@@ -16,11 +16,19 @@ export default {
       path: "home/news"
     }
   },
+  created() {
+    console.log("home created");
+  },
+  destroyed() { //不被调用？
+    console.log("home destroyed");
+  },
   //这两个函数只有使用了keep-alive时才有效
   activated() {
+    console.log("home activated");
     this.$router.push(this.path);
   },
   deactivated() {
+    console.log("home deactivated");
   },
   beforeRouteLeave(to, from, next) {
     this.path = this.$route.path;
