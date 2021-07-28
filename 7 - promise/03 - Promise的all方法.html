@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise的all方法</title>
+</head>
+<body>
+<script>
+  //两个请求都到达才可以操作
+  let isResult1 = false;
+  let isResult2 = false;
+  //请求一
+  $ajax({
+    url: "",
+    success: () => {
+      console.log("结果1");
+      isResult1 = true;
+      handleResult();
+    }
+  })
+  //请求二
+  $ajax({
+    url: "",
+    success: () => {
+      console.log("结果2");
+      isResult2 = true;
+      handleResult()
+    }
+  })
+
+  function handleResult() {
+    if (isResult1 && isResult2) {
+      //操作
+    }
+  }
+
+  Promise.all([
+      new Promise((resolve, reject) => {
+        //请求一
+        $ajax({
+          url: "",
+          success: (data) => {
+            resolve(data);
+          }
+        })
+      }),
+    new Promise((resolve, reject) => {
+      //请求二
+      $ajax({
+        url: "",
+        success: (data) => {
+          resolve(data);
+        }
+      })
+    })
+  ]).then(results => {
+    // results[0], results[1]，保存着两个resolve的数据
+  })
+</script>
+</body>
+</html>
