@@ -103,9 +103,6 @@ request({
 
 //axios的拦截器
 instance.interceptors.request.use(config => {
-  //config中的一些信息不符合服务器的要求
-  //每次发送网络请求时，都希望在界面中显示一个图标
-  //某些网络请求必须携带一些特殊的信息
   return config; //将拦截到的请求返回
 }, error => {});
 instance.interceptors.response.use()
